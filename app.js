@@ -1,24 +1,3 @@
-/*
-var http = require('http');
-var io = require('socket.io').listen(http);
-var fs = require('fs');
-
-var server = http.createServer(onresponse);
-server.listen(3000, "127.0.0.1");
-
-function onresponse(req, res){
-	fs.readFile('./library/' + 'book.txt', function(err, content){
-		if(err){
-			res.writeHead(500);
-			return res.end('error reading file');
-		}
-
-		res.writeHead(200);
-		return res.end(content);
-	});
-}
-*/
-
 //loading modules and create http server
 var http = require('http');
 var fs = require('fs');
@@ -32,12 +11,11 @@ function onresponse(req, res){
 
 	switch(path){
 		case '/':
-			res.writeHead(200, {'Content-type' : 'text/plain'});
-			res.end('success with pathname -> ' + path + '\n');
+			mainPath(res, path);
 		break;
 		case '/library':
 			fs.readFile('./book.txt', function(err, content){
-				onResource(err, content, res);
+				onFileResponse(err, content, res);
 			});
 		break;
 		default:
@@ -45,12 +23,12 @@ function onresponse(req, res){
 	}
 }
 
-function pageNotFound(res){
-	res.writeHead(404);
-	res.end('404 - Not Found');
+function mainPath(res, path){
+	res.writeHead(200, {'Content-type' : 'text/plain'});
+	res.end('success with pathname -> ' + path + '\n');
 }
 
-function onResource(err, content, res){
+function onFileResponse(err, content, res){
 	if(err){
 		res.writeHead(500);
 		res.end('Cannot read file');
@@ -59,3 +37,9 @@ function onResource(err, content, res){
 	res.writeHead(200);
 	res.end(content);
 }
+
+function pageNotFound(res){
+	res.writeHead(404);
+	res.end('404 - Not Found');
+}
+
