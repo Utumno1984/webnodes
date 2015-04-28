@@ -1,6 +1,7 @@
-var mine = require('./module_01') ;
-var url = 'http://www.hostingtalk.it' ;
-console.log( mine.getHostName(url) ) ;
-console.log( mine.getProtocol(url) ) ;
-// La prossima lancia un errore!
-// console.log( mine.parse(url) ) ;
+var dispatcher = require('./module-02') ;
+console.log("Server is up and running...n") ;
+dispatcher.addListener("get", "/my_page", function(req, res) { 
+  res.writeHead(200, {'Content-Type': 'text/plain'}) ;
+  res.end('Hello World!') ;
+}) ;
+dispatcher.showList() ;
