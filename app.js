@@ -15,8 +15,7 @@ function onresponse(req, res){
 
 	switch(path){
 		case '/':
-			res.writeHead(200, {'Content-type' : 'text/plain'});
-			res.end('success with pathname -> ' + path + '\n');
+			mainPath(res, path);
 		break;
 		case '/library':
 			fs.readFile('./library/book.txt', function(err, content){
@@ -26,6 +25,11 @@ function onresponse(req, res){
 		default:
 			pageNotFound(res);
 	}
+}
+
+function mainPath(res, path){
+    res.writeHead(200, {'Content-type' : 'text/plain'});
+    res.end('success with pathname -> ' + path + '\n');
 }
 
 function pageNotFound(res){
