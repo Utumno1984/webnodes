@@ -5,9 +5,6 @@ var config = JSON.parse(fs.readFileSync('./config/serverAddress.json', 'utf-8'))
 var server = http.createServer(onresponse).listen(config.app.server.port, config.app.server.address);
 console.log('server run at ' + config.app.server.address + ':' + config.app.server.port);
 
-
-
-console.log(config);
 //1st callback on success
 function onresponse(req, res){
 	var path = url.parse(req.url).pathname;
