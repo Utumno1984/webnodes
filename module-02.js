@@ -15,4 +15,12 @@ HttpDispatcher.prototype.showList = function() {
     }
   }
 }
+HttpDispatcher.prototype.dispatch = function(req, res) {
+  var parsedUrl = require('url').parse(req.url, true).pathname ;
+  var method = req.method.toLowerCase() ;
+  for (i in this.list[method]) if (this.list[method][i].url == parsedUrl) {
+    this.list[method][i].cb(req, res) ;
+  }
+}
+
 module.exports = new HttpDispatcher() ;
