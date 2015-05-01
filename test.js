@@ -26,3 +26,5 @@ dispatcher.addListener("post", "/login", function(req, res) {
 http.createServer(function (req, res) {
   dispatcher.dispatch(req, res) ;
 }).listen(8080, 'localhost') ;
+
+dispatcher.showList();
