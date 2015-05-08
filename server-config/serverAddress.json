@@ -7,18 +7,18 @@
 	"route": {
 		"/": {
 			"method" : "get",
-			"path" : "\/",
+			"path" : "^\/$",
 			"file" : "./server-pages/home.html"
 		},
 		"page_1": {
 			"method" : "get",
-			"path" : "\/[a-z]+([1]){1}",
-			"url": "/page1",
+			"path" : "\/page1",
+			"url": "\/page1",
 			"file" : "./server-pages/page1.html"
 		},
 		"page_2": {
 			"method" : "get",
-			"path" : "\/[a-z]+([1]){1}",
+			"path" : "/page2",
 			"file" : "./server-pages/page2.html"
 		}
 	} 
