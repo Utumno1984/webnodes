@@ -11,9 +11,9 @@ HttpDispatcher.prototype.dispatch = function(req, res){
 	for (i in this.list[method]){
 		console.log(this.list[method][i].url);
 		console.log(parsedUrl);
-		var pippo = new RegExp( this.list[method][i].url, 'g' );
-		//console.log(pippo.test(parsedUrl));
-		if( pippo.test(parsedUrl) ){
+		var reg = new RegExp( '^' + this.list[method][i].url + '$', 'g' );
+		//console.log(reg.test(parsedUrl));
+		if( reg.test(parsedUrl) ){
 			this.getFile(this.list[method][i].cb, req, res) ;
 		}
 	}

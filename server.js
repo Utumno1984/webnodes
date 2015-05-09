@@ -6,41 +6,6 @@ var server = http.createServer(onrequest) ;
 var dispatcher = require( './server-modules/httpdispatcher.js' ) ;
 console.log(cfg.route);
 
-/*
-dispatcher.addListener("get", "/", function (req, res){
-	fs.readFile("./server-pages/home.html", function (err, content){
-		if(err){
-			res.writeHead(500) ;
-			res.end( 'Error loading file --> ' + err ) ;
-		}
-		res.writeHead(200) ;
-		res.end(content) ;
-	}) ;
-}) ;
-
-dispatcher.addListener("get", "/page1", function (req, res){
-	fs.readFile("./server-pages/page1.html", function (err, content){
-		if(err){
-			res.writeHead(500) ;
-			res.end( 'Error loading file --> ' + err ) ;
-		}
-		res.writeHead(200) ;
-		res.end(content) ;
-	}) ;
-}) ;
-
-dispatcher.addListener("get", "/page2", function (req, res){
-	fs.readFile("./server-pages/page2.html", function (err, content){
-		if(err){
-			res.writeHead(500) ;
-			res.end( 'Error loading file --> ' + err ) ;
-		}
-		res.writeHead(200) ;
-		res.end(content) ;
-	}) ;
-}) ;
-*/
-
 if(cfg.route){
 	var method,
 		path,
